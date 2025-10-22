@@ -1,5 +1,3 @@
-```bash
-
 #!/bin/bash
             exec > >(tee -a /var/log/user-data.log) 2>&1
             set -Eeuo pipefail
@@ -39,5 +37,4 @@
             sed -i 's/^group = .*/group = nginx/' /etc/php-fpm.d/www.conf
             nginx -t
             systemctl restart php-fpm nginx
-
-```
+            
