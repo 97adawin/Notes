@@ -11,8 +11,8 @@
             systemctl enable php-fpm nginx
 
             mkdir -p /var/www/html
-            if ! grep -q " ${EFSId}:/ /var/www/html " /etc/fstab; then
-              echo "${EFSId}:/ /var/www/html efs _netdev,tls,accesspoint=${EFSAccessPointId},noresvport 0 0" >> /etc/fstab
+            if ! grep -q " fs-094533122ca7d68cd:/ /var/www/html " /etc/fstab; then
+              echo "fs-094533122ca7d68cd:/ /var/www/html efs _netdev,tls,accesspoint=fsap-0c2e2401cb2cc2fd5,noresvport 0 0" >> /etc/fstab
             fi
             for i in {1..6}; do mount -a && break || sleep 5; done
             echo ok >/var/www/html/health || true
